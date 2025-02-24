@@ -1,0 +1,26 @@
+name: "sodmany"
+version: '3.8'
+services:
+  web:
+    build: .
+    #image: nginx:latest
+    hostname: web
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - sodmany_default
+
+  db:
+    build: .
+    image: mysql:5.7
+    hostname: db
+    environment:
+      MYSQL_ROOT_PASSWORD: Qwer1234
+    networks:
+      - sodmany_default
+
+networks:
+    sodmany_default:
+      name: sodmanyxd

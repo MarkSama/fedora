@@ -1,0 +1,14 @@
+$TTL 3H
+@	IN SOA	@ root.vasvill-m100.lan. (
+					0	; serial
+					1D	; refresh
+					1H	; retry
+					1W	; expire
+					3H )	; minimum
+	NS	@
+@		IN	A	10.30.100.160
+m100server	IN	A	10.30.100.160
+m100client1	IN	A	10.30.100.161
+m100client2	IN	A	10.30.100.162
+m100client11	IN	CNAME	m100client1
+m100client22	IN	CNAME	m100client2

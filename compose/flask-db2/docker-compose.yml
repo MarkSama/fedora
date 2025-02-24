@@ -1,0 +1,29 @@
+name: "flask2"
+services:
+  flask:
+    build: .
+    #image: python:latest
+    hostname: flask2
+    container_name: flask2
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mydb
+    networks:
+      - myflasknet
+
+  mydb:
+    #build: .
+    image: mysql:latest
+    hostname: mydb
+    environment:
+      MYSQL_ROOT_PASSWORD: Qwer1234
+      MYSQL_DATABASE: flaskdb
+      MYSQL_USER: flaskuser
+      MYSQL_PASSWORD: flaskpass
+    networks:
+      - myflasknet
+
+networks:
+    myflasknet:
+      name: myflasknet

@@ -1,0 +1,26 @@
+name: "flask-sodmany"
+version: '3.8'
+services:
+  flask:
+    build: .
+    #image: python:latest
+    hostname: flaskapp
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - flasknet
+
+  db:
+    build: .
+    image: mysql:5.7
+    hostname: db
+    environment:
+      MYSQL_ROOT_PASSWORD: Qwer1234
+    networks:
+      - flasknet
+
+networks:
+    flasknet:
+      name: flasknet
