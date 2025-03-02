@@ -1,0 +1,42 @@
+#version: '3.8'
+
+services:
+    mysqldb:
+      build: ./mysql/
+      container_name: mysqldb
+      networks:
+        - mygoapp_network
+      ports:
+        - "3306:3306"
+
+
+    goapp:
+      build: ./goapp/
+      container_name: goapp
+      depends_on:
+        - mysqldb
+      networks:
+        - mygoapp_network
+      ports:
+        - "5050:5050"
+      environment:
+        MYSQL_ROOT_PASSWORD: Qwer1234
+
+
+    nagios:
+      image: manios/nagios
+      container_name: mynagios
+      ports:
+        - "8080:80"
+      networks:
+        - mygoapp_network
+      environment:
+        NAGIOSADMIN_USER: nagiosadmin
+        NAGIOSADMIN_PASS: nagiosadmin
+
+
+
+
+networks:
+    mygoapp_network:
+      name: mygoapp_network
