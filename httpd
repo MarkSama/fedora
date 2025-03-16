@@ -1,0 +1,2 @@
+install httpd mod_ssl php 
+conf.d modulok mappája (usr/share/doc/httpd/ itt talható az mpm modul)
