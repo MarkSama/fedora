@@ -1,0 +1,6 @@
+mysql-server
+mysql -u root (-p ha jelszo is van)
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'jelszo'
+GRANT ALL ON *.* TO 'root' WITH GRANT OPTION
+FLUSH PRIVILIGESES
